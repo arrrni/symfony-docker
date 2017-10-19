@@ -30,7 +30,6 @@ services:
       context: .
       dockerfile: ./Dockerfile.h2-proxy
     volumes:
-      # Comment out the next line in production
       - ./docker/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
     ports:
       - '443:443'
@@ -41,4 +40,3 @@ services:
         - ./docker/mongodb:/data/db
     ports:
         - "27018:27017"
-
