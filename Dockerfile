@@ -47,7 +47,10 @@ COPY docker/app/docker-entrypoint.sh /usr/local/bin/docker-app-entrypoint
 RUN chmod +x /usr/local/bin/docker-app-entrypoint
 
 # Download the Symfony skeleton and leverage Docker cache layers
-ENV STABILITY stable
+# Allow to use development versions of Symfony
+
+ARG STABILITY=stable
+ENV STABILITY ${STABILITY}
 RUN composer create-project "symfony/skeleton" . --stability=$STABILITY  --prefer-dist --no-dev --no-progress --no-scripts --no-plugins --no-interaction
 
 COPY . .
