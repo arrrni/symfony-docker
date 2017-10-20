@@ -42,3 +42,5 @@ services:
         - ./docker/mongodb:/data/db
     ports:
         - "27018:27017"
+    depends_on:
+        - app
